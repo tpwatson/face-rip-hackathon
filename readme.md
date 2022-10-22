@@ -12,3 +12,10 @@ Logo (placeholder) on left, a search bar (non func), upload button, login button
 
 
 Now determine how to best display content units.
+
+If users can share youtube, twitter, tiktok, or upload - what is the best way?
+
+Cards for each type.
+
+When a user watches the content we need to engage the camera, and recognize face then start playing.
+
