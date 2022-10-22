@@ -9,3 +9,6 @@ Authentication
 
 Next build the nav bar v1
 Logo (placeholder) on left, a search bar (non func), upload button, login button (highlighted), settings icon (non func)
+
+
+Now determine how to best display content units.
