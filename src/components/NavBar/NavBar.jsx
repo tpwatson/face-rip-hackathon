@@ -2,7 +2,7 @@ import React from 'react'
 import { ReactDOM } from 'react'
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import './Navbar.css'
-import Logo from '../../assets/logo3.png'
+import Logo from '../../assets/logo4.png'
 
 export default function Navbar() {
     
