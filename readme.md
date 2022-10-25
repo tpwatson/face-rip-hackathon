@@ -64,4 +64,6 @@ Social Media Agg
 -User sharing goes viral much easier - 8
 -Harder to KYC or age verify users - (-2)
 
-Clearly I need to focus in on making this an NFT hub - with a unique twist.
+Clearly I need to focus in on making this an NFT hub - with a unique twist. 
+Not just a new social media platform that happens to support NFTs.
+
