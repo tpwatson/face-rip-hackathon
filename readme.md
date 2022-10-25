@@ -19,3 +19,14 @@ Cards for each type.
 
 When a user watches the content we need to engage the camera, and recognize face then start playing.
 
+
+
+1) Add way to upload a piece of content (ipfs) using web3.storage for simplicity
+
+save data to DB (somewhere)
+mint NFTObject to XRPL
+view on content single page
+engage camera while viewing content
+
+
+
