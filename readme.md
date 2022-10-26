@@ -21,7 +21,7 @@ When a user watches the content we need to engage the camera, and recognize face
 1✔️) Add way to upload a piece of content (ipfs) using web3.storage for simplicity
 
 2) save data to DB (somewhere)
-Need to work out what kind of DBs will be implemented
+Postgre Needed to facilitate
 
 
 3) mint NFTObject to XRPL

@@ -46,8 +46,6 @@ export default function Upload() {
         return cid
     }
 	
-    
-
     return (
         <>
         <h1>Upload Funny Stuff</h1>
