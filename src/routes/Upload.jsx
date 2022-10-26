@@ -66,7 +66,13 @@ export default function Upload() {
 				<p>Select a file to show details</p>
 			)}
             {isStored ? (
-            <p>File got stored at {storageLocation}</p>
+                <div>
+                    <p>File got stored  
+                        <a href={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} target="blank"> here</a>
+                    </p>
+                    <img src={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} width="250" alt="" />
+                </div>
+
                 ) : (
             <p>File Did Not Get Stored</p>
             )}
