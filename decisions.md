@@ -36,4 +36,5 @@ Before posting anything users have to go through the minting flow.
 
 
 No, NFT version optional.
-Users can have regular content up, and not mint it unless it seem worth it.
+Users can upload content, if they want to make it an NFT then it becomes sellable.
+have regular content up, and not mint it unless it seem worth it.

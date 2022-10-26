@@ -9,6 +9,7 @@ import Feed from './routes/Feed'
 import Profile from './routes/Profile'
 import ContentSingle from './routes/ContentSingle'
 import logo from './assets/logo.png'
+import DatabaseTest from './routes/DatabaseTest'
 
 function App() {
   const [count, setCount] = useState(0)
