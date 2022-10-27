@@ -41,6 +41,7 @@ app.delete('/merchants/:id', (req, res) => {
     res.status(500).send(error);
   })
 })
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
