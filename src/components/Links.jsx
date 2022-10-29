@@ -9,6 +9,8 @@ import Profile from '../routes/Profile'
 import Upload from '../routes/Upload'
 import ContentSingle from '../routes/ContentSingle';
 import DatabaseTest from '../routes/DatabaseTest';
+import SignUp from '../routes/SignUp';
+import Login from '../routes/Login';
 
 export default function Links() {
     return (
@@ -50,6 +52,16 @@ export default function Links() {
                         Database Test
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to="/SignUp">
+                        Sign Up
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Login">
+                        Login
+                    </NavLink>
+                </li>
             </ul>
         <Routes>
             <Route exact path="/" element={<Homepage />} />
@@ -59,6 +71,8 @@ export default function Links() {
             <Route exact path="/upload" element={<Upload />} />
             <Route exact path="/contentSingle" element={<ContentSingle />} />
             <Route exact path="/databaseTest" element={<DatabaseTest />} />
+            <Route exact path="/signUp" element={<SignUp />} />
+            <Route exact path="/login" element={<Login />} />
         </Routes>
         </BrowserRouter>
         </>

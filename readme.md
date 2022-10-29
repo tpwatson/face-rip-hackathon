@@ -37,6 +37,5 @@ engage camera while viewing content
 Main purpose needed:
 Creator upload/mint funny content
 Viewer View content
-If laugh
-    save face or landmark data somewhere linked to creator's profile data
+If laugh, save face or landmark data somewhere linked to creator's profile data
 Poster's profile shows collected faces
