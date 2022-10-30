@@ -2,7 +2,7 @@ import express from 'express'
 const app = express();
 const port = 3001
 
-import merchant_model from './merchant_model.js';
+import user_model from './user_model.js';
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  merchant_model.getMerchants()
+    user_model.getUsers()
   .then(response => {
     res.status(200).send(response);
   })
@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
   })
 })
 
-app.post('/merchants', (req, res) => {
-  merchant_model.createMerchant(req.body)
+app.post('/users', (req, res) => {
+    user_model.createUser(req.body)
   .then(response => {
     res.status(200).send(response);
   })
@@ -32,8 +32,8 @@ app.post('/merchants', (req, res) => {
   })
 })
 
-app.delete('/merchants/:id', (req, res) => {
-  merchant_model.deleteMerchant(req.params.id)
+app.delete('/users/:id', (req, res) => {
+    user_model.deleteUser(req.params.id)
   .then(response => {
     res.status(200).send(response);
   })
