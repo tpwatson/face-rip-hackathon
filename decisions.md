@@ -32,9 +32,13 @@ Second:
 Is all content minted before its viewable?
 
 Yes, only NFTs
-Before posting anything users have to go through the minting flow.
+Before posting anything users have to go through the minting flow. - 5
 
 
 No, NFT version optional.
 Users can upload content, if they want to make it an NFT then it becomes sellable.
-have regular content up, and not mint it unless it seem worth it.
+have regular content up, and not mint it unless it seem worth it. - 10
+
+
+
+
