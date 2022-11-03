@@ -1,16 +1,63 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { ReactDOM } from 'react'
-import { useState } from 'react';
 import { Web3Storage } from 'web3.storage'
 
-export default function Upload() {
 
+export default function Upload() {
     const [selectedFile, setSelectedFile] = useState();
 	const [isSelected, setIsSelected] = useState(false);
     // web3.storage state
     const [isStored, setIsStored] = useState(false);
     const [storageLocation, setStorageLocation] = useState();
 
+    // store content metadata in db
+    const [uploadFormData, setUploadFormData] = useState({
+        title: '',
+        description: '',
+        tags: '',
+        cid: '',
+        filename: '',
+        filetype: '',
+        timestamp: ''
+    });
+        
+    // const [title, setTitle] = useState();
+    // const [description, setDescription] = useState();
+    // const [cid, setCid] = useState();
+    // const [filname, setFilename] = useState();
+    // const [filetype, setFiletype] = useState();
+    // const [filetype, setFiletype] = useState();
+    // const [timestamp, setTimestamp] = useState();
+
+
+    function publishToDb(){
+        // use on change to set the state per character
+        setTitle(document.getElementById("title").value)
+        const description = document.getElementById("description").value
+        const cid = document.getElementById("cid").value
+        const filename = document.getElementById("filename").value
+        setFiletype(document.getElementById("filetype").value)
+        setTimestamp(Date.now()/1000)
+        createContent(title, description, cid, filename, filetype, timestamp);
+    }
+
+      function createContent(title, description, cid, filename, filetype, timestamp) {
+        
+        fetch('http://localhost:3001/content', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({title, description, cid, filename, filetype, timestamp}),
+        })
+          .then(response => {
+            return response.text();
+          })
+          .then(data => {
+            alert(data);
+            getContent();
+          });
+      }
     //console.log(process.env);
 
     const changeHandler = (event) => {
@@ -18,14 +65,6 @@ export default function Upload() {
 		setIsSelected(true);
 	};
     function getAccessToken () {
-        // If you're just testing, you can paste in a token
-        // and uncomment the following line:
-        // return 'paste-your-token-here'
-      
-        // In a real app, it's better to read an access token from an
-        // environement variable or other configuration that's kept outside of
-        // your code base. For this to work, you need to set the
-        // WEB3STORAGE_TOKEN environment variable before you run your code.
         return import.meta.env.VITE_WEB3STORAGE_TOKEN
       }
     function makeStorageClient () {
@@ -65,9 +104,16 @@ export default function Upload() {
 			)}
             {isStored ? (
                 <div>
-                    <p>File got stored  
-                        <a href={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} target="blank"> here</a>
+                    <p>File uploaded to IPFS @
+                        <a href={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} target="blank"> {storageLocation}</a>
                     </p>
+                    <input type="text" id="title" onChange={setTitle} placeholder="Title (stored on FaceRip)" />
+                    <input type="text" id="description" placeholder="Description (stored on FaceRip)" />
+                    <input type="text" id="filename" placeholder="Filename (stored on IPFS)" defaultValue={selectedFile.filename} />
+                    <input type="text" id="filetype" placeholder="File Type" defaultValue={selectedFile.type} />
+                    <input type="text" id="cid" placeholder="ipfsCID" defaultValue={storageLocation}/>
+                    <input type="text" id="timestamp" placeholder="Date & Time Uploaded" defaultValue={Date.now()/1000} />
+                    <button onClick={publishToDb}>Publish</button>
                     <img src={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} width="250" alt="" />
                 </div>
 

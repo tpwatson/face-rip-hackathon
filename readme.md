@@ -58,19 +58,32 @@ When a user watches the content we need to engage the camera, and recognize face
 
 
 1✔️) Add way to upload a piece of content (ipfs) using web3.storage for simplicity
+Save uploaded content to the db with metadata attached
+Perhaps save user data in the web app's state
+Make it so only logged in users can upload content
+Make it so content is stored in the database with the ipfs hash, and the user's account
+
 
 2 ✔️) save data to DB (somewhere)
 Postgre Needed to facilitate
 
 3 ✔️) Create new user
+Create user on sign up page
 
 4) Log in with user
+Associate youtube or twitter account
+Post content from social
 
 5) mint NFTObject to XRPL
+Create an NFT of the posted content
 Get a feel for the costs and frictions for user to mint NFTs onto XRPL
 
+
 6) view on content single page
-engage camera while viewing content
+engage camera while viewing content and perform face recog reaction detection
+save reaction image and update user's face-collection with the correct data
+On user profile page make a grid of their face-collection
+Automatically make user connected sharing links for viewers to share content with those on other social media. (Growth hack)
 
 7) Post latest uploads/posts in feed
 
@@ -79,3 +92,8 @@ Creator upload/mint funny content
 Viewer View content
 If laugh, save face or landmark data somewhere linked to creator's profile data
 Poster's profile shows collected faces
+
+
+How to implement rewarding of users who share links?
+Who ever clicks the special user attached link to the content, if they react to it the face will go to the sharer.
+This will reward industrious sharers and encourage them to share more.
