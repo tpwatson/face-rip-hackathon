@@ -15,6 +15,7 @@ app.use(function (req, res, next) {
 });
 
 // CONTENT
+/*
 app.get('/content', (req, res) => {
   content_model.getContent()
 .then(response => {
@@ -24,6 +25,7 @@ app.get('/content', (req, res) => {
   res.status(500).send(error);
 })
 })
+*/
 app.post('/content', (req, res) => {
   content_model.createContent(req.body)
 .then(response => {
@@ -33,6 +35,7 @@ app.post('/content', (req, res) => {
   res.status(500).send(error);
 })
 })
+
 // USERS
 app.get('/', (req, res) => {
   user_model.getUsers()

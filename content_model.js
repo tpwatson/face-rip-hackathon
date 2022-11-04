@@ -22,8 +22,15 @@ const getContent = () => {
       
       const createContent = (body) => {
         return new Promise(function(resolve, reject) {
-          const { title, description, cid } = body
-          pool.query('INSERT INTO content (title, description, cid) VALUES ($1, $2, $3) RETURNING *', [title, description, cid], (error, results) => {
+            console.log(body.uploadFormData);
+          const title = body.uploadFormData.title
+            const description = body.uploadFormData.description
+            const tags = body.uploadFormData.tags
+            const cid = body.uploadFormData.cid
+            const filename = body.uploadFormData.filename
+            const filetype = body.uploadFormData.filetype
+            const timestamp = body.uploadFormData.timestamp
+          pool.query('INSERT INTO content (title, description, tags, cid, filename, filetype, timestamp) VALUES ($1, $2, $3, $4, $5, $6 ,$7) RETURNING *', [title, description, tags, cid, filename, filetype, timestamp], (error, results) => {
             if (error) {
               reject(error)
             }

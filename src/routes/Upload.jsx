@@ -10,6 +10,7 @@ export default function Upload() {
     const [isStored, setIsStored] = useState(false);
     const [storageLocation, setStorageLocation] = useState();
 
+
     // store content metadata in db
     const [uploadFormData, setUploadFormData] = useState({
         title: '',
@@ -18,13 +19,16 @@ export default function Upload() {
         cid: storageLocation,
         filename: '',
         filetype: '',
-        timestamp: ''
+        timestamp: Date.now()/1000
     });
 
     function handleFormDataUpdate(event) {
         setUploadFormData(prevFormData => {
             return {
                 ...prevFormData,
+                cid: storageLocation,
+                filetype: selectedFile.type,
+                filename: selectedFile.name,
                 [event.target.name]: event.target.value
                 
             }
@@ -32,12 +36,12 @@ export default function Upload() {
     }
     
     function publishToDb(){
-        createContent({...setUploadFormData});
+        createContent({...uploadFormData});
+        console.log({...uploadFormData});
     }
     
 
       function createContent(uploadFormData) {
-        console.log(typeof uploadFormData);
         
         fetch('http://localhost:3001/content', {
           method: 'POST',
@@ -47,6 +51,7 @@ export default function Upload() {
           body: JSON.stringify({uploadFormData}),
         })
           .then(response => {
+            console.log(JSON.stringify({uploadFormData}));
             return response.text();
           })
           .then(data => {
@@ -59,9 +64,10 @@ export default function Upload() {
     }
     //console.log(process.env);
 
-    const changeHandler = (event) => {
+    const fileSelectFunction = (event) => {
 		setSelectedFile(event.target.files[0]);
 		setIsSelected(true);
+
 	};
     function getAccessToken () {
         return import.meta.env.VITE_WEB3STORAGE_TOKEN
@@ -87,7 +93,7 @@ export default function Upload() {
     return (
         <>
         <h1>Upload Funny Stuff</h1>
-        <input type="file" name="file" onChange={changeHandler} />
+        <input type="file" name="file" onChange={fileSelectFunction} />
         {isSelected ? (
 				<div>
 					<p>Filename: {selectedFile.name}</p>
@@ -111,10 +117,11 @@ export default function Upload() {
                     </p>
                     <input type="text" name="title" onChange={handleFormDataUpdate} placeholder="Title (stored on FaceRip)" />
                     <input type="text" name="description" onChange={handleFormDataUpdate} placeholder="Description (stored on FaceRip)" />
-                    <input type="text" name="filename" onChange={handleFormDataUpdate} placeholder="Filename (stored on IPFS)" defaultValue={selectedFile.filename} />
-                    <input type="text" name="filetype" placeholder="File Type" defaultValue={selectedFile.type} />
-                    <input type="text" name="cid" placeholder="ipfsCID" defaultValue={storageLocation}/>
-                    <input type="text" name="timestamp" placeholder="Date & Time Uploaded" defaultValue={Date.now()/1000} />
+                    <input type="text" name="tags" onChange={handleFormDataUpdate} placeholder="Tags (stored on FaceRip)" />
+                    <input type="text" name="filename" onChange={handleFormDataUpdate} placeholder="Filename (stored on IPFS)" defaultValue={selectedFile.name} />
+                    <input type="text" name="filetype" onChange={handleFormDataUpdate} placeholder="File Type" value={selectedFile.type} />
+                    <input type="text" name="cid" onChange={handleFormDataUpdate} placeholder="ipfsCID" defaultValue={storageLocation}/>
+                    <input type="text" name="timestamp" onChange={handleFormDataUpdate} placeholder="Date & Time Uploaded" defaultValue={Date.now()/1000} />
                     <button onClick={publishToDb}>Publish</button>
                     <img src={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} width="250" alt="" />
                 </div>

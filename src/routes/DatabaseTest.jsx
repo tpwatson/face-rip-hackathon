@@ -6,7 +6,7 @@ export default function DatabaseTest() {
   }, []);
 
   function getUser() {
-    fetch('http://localhost:3001')
+    fetch('http://localhost:3001/content')
       .then(response => {
         return response.text();
       })
