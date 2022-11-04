@@ -15,49 +15,48 @@ export default function Upload() {
         title: '',
         description: '',
         tags: '',
-        cid: '',
+        cid: storageLocation,
         filename: '',
         filetype: '',
         timestamp: ''
     });
-        
-    // const [title, setTitle] = useState();
-    // const [description, setDescription] = useState();
-    // const [cid, setCid] = useState();
-    // const [filname, setFilename] = useState();
-    // const [filetype, setFiletype] = useState();
-    // const [filetype, setFiletype] = useState();
-    // const [timestamp, setTimestamp] = useState();
 
-
-    function publishToDb(){
-        // use on change to set the state per character
-        setTitle(document.getElementById("title").value)
-        const description = document.getElementById("description").value
-        const cid = document.getElementById("cid").value
-        const filename = document.getElementById("filename").value
-        setFiletype(document.getElementById("filetype").value)
-        setTimestamp(Date.now()/1000)
-        createContent(title, description, cid, filename, filetype, timestamp);
+    function handleFormDataUpdate(event) {
+        setUploadFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+                
+            }
+        })
     }
+    
+    function publishToDb(){
+        createContent({...setUploadFormData});
+    }
+    
 
-      function createContent(title, description, cid, filename, filetype, timestamp) {
+      function createContent(uploadFormData) {
+        console.log(typeof uploadFormData);
         
         fetch('http://localhost:3001/content', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({title, description, cid, filename, filetype, timestamp}),
+          body: JSON.stringify({uploadFormData}),
         })
           .then(response => {
             return response.text();
           })
           .then(data => {
             alert(data);
-            getContent();
-          });
-      }
+ 
+          })
+          .catch(err => {
+            console.log(err);
+        })
+    }
     //console.log(process.env);
 
     const changeHandler = (event) => {
@@ -98,32 +97,32 @@ export default function Upload() {
 						lastModifiedDate:{' '}
 						{selectedFile.lastModifiedDate.toLocaleDateString()}
 					</p>
+                    <div>
+				        <button onClick={getFiles}>Upload</button>
+			        </div>
 				</div>
 			) : (
-				<p>Select a file to show details</p>
+				<p></p>
 			)}
             {isStored ? (
                 <div>
                     <p>File uploaded to IPFS @
                         <a href={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} target="blank"> {storageLocation}</a>
                     </p>
-                    <input type="text" id="title" onChange={setTitle} placeholder="Title (stored on FaceRip)" />
-                    <input type="text" id="description" placeholder="Description (stored on FaceRip)" />
-                    <input type="text" id="filename" placeholder="Filename (stored on IPFS)" defaultValue={selectedFile.filename} />
-                    <input type="text" id="filetype" placeholder="File Type" defaultValue={selectedFile.type} />
-                    <input type="text" id="cid" placeholder="ipfsCID" defaultValue={storageLocation}/>
-                    <input type="text" id="timestamp" placeholder="Date & Time Uploaded" defaultValue={Date.now()/1000} />
+                    <input type="text" name="title" onChange={handleFormDataUpdate} placeholder="Title (stored on FaceRip)" />
+                    <input type="text" name="description" onChange={handleFormDataUpdate} placeholder="Description (stored on FaceRip)" />
+                    <input type="text" name="filename" onChange={handleFormDataUpdate} placeholder="Filename (stored on IPFS)" defaultValue={selectedFile.filename} />
+                    <input type="text" name="filetype" placeholder="File Type" defaultValue={selectedFile.type} />
+                    <input type="text" name="cid" placeholder="ipfsCID" defaultValue={storageLocation}/>
+                    <input type="text" name="timestamp" placeholder="Date & Time Uploaded" defaultValue={Date.now()/1000} />
                     <button onClick={publishToDb}>Publish</button>
                     <img src={"https://"+storageLocation + ".ipfs.w3s.link/"+selectedFile.name} width="250" alt="" />
                 </div>
 
                 ) : (
-            <p>File Did Not Get Stored</p>
+            <p></p>
             )}
 
-			<div>
-				<button onClick={getFiles}>Upload</button>
-			</div>
         </>
     )
 }
