@@ -21,15 +21,9 @@ const getContent = () => {
     }
       
       const createContent = (body) => {
+        //console.log("body.uploadFormData", body.uploadFormData );
         return new Promise(function(resolve, reject) {
-            console.log(body.uploadFormData);
-          const title = body.uploadFormData.title
-            const description = body.uploadFormData.description
-            const tags = body.uploadFormData.tags
-            const cid = body.uploadFormData.cid
-            const filename = body.uploadFormData.filename
-            const filetype = body.uploadFormData.filetype
-            const timestamp = body.uploadFormData.timestamp
+          const { title, description, tags, cid, filename, filetype, timestamp } = body.uploadFormData;
           pool.query('INSERT INTO content (title, description, tags, cid, filename, filetype, timestamp) VALUES ($1, $2, $3, $4, $5, $6 ,$7) RETURNING *', [title, description, tags, cid, filename, filetype, timestamp], (error, results) => {
             if (error) {
               reject(error)

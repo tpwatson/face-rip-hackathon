@@ -1,4 +1,5 @@
 import express from 'express'
+import bodyParser from 'body-parser'
 const app = express();
 const port = 3001
 
@@ -7,6 +8,10 @@ import content_model from './content_model.js';
 
 
 app.use(express.json())
+
+//app.use(bodyParser.json({ type: "application/json" }));
+//app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5174');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
@@ -27,6 +32,7 @@ app.get('/content', (req, res) => {
 })
 */
 app.post('/content', (req, res) => {
+  //console.log("req.body", req.body);
   content_model.createContent(req.body)
 .then(response => {
   res.status(200).send(response);

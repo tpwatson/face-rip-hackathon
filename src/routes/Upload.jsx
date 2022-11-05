@@ -35,14 +35,13 @@ export default function Upload() {
         })
     }
     
-    function publishToDb(){
-        createContent({...uploadFormData});
-        console.log({...uploadFormData});
+    function publishToDb() { 
+        createContent(uploadFormData);
+        //console.log("publishToDb ...uploadFormData = \n", {...uploadFormData});
     }
     
 
       function createContent(uploadFormData) {
-        
         fetch('http://localhost:3001/content', {
           method: 'POST',
           headers: {
@@ -51,7 +50,7 @@ export default function Upload() {
           body: JSON.stringify({uploadFormData}),
         })
           .then(response => {
-            console.log(JSON.stringify({uploadFormData}));
+            //console.log(JSON.stringify({uploadFormData}));
             return response.text();
           })
           .then(data => {
