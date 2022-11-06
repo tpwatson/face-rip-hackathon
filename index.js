@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 });
 
 // CONTENT
-/*
+
 app.get('/content', (req, res) => {
   content_model.getContent()
 .then(response => {
@@ -30,7 +30,7 @@ app.get('/content', (req, res) => {
   res.status(500).send(error);
 })
 })
-*/
+
 app.post('/content', (req, res) => {
   //console.log("req.body", req.body);
   content_model.createContent(req.body)

@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from 'react';
+
 export default function DatabaseTest() {
-  const [users, setUsers] = useState(false);
+  const [content, setContent] = useState(false);
   useEffect(() => {
-    getUser();
+    getContent();
   }, []);
 
-  function getUser() {
+  function getContent() {
     fetch('http://localhost:3001/content')
       .then(response => {
         return response.text();
       })
       .then(data => {
-        setUsers(data);
+        setContent(data);
       });
   }
 
@@ -50,11 +51,7 @@ export default function DatabaseTest() {
 
   return (
     <div>
-      {users ? users : 'There is no user data available'}
-      <br />
-      <button onClick={createUser}>Add user</button>
-      <br />
-      <button onClick={deleteUser}>Delete user</button>
+      {content ? content : 'There is no content data available'}
     </div>
   );
 }

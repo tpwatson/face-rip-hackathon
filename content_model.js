@@ -28,7 +28,12 @@ const getContent = () => {
             if (error) {
               reject(error)
             }
-            resolve(`A new content has been added added: ${results.rows[0]}`)
+            if (results) {
+              resolve("A new content has been added added: " + results.rows[0]);
+            } else {
+                resolve("No content created");
+            }
+            //resolve(`A new content has been added added: ${results.rows[0]}`)
           })
         })
       }
