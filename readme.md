@@ -70,8 +70,14 @@ Make it so content is stored in the database with the ipfs hash, and the user's 
 3 ✔️) Create new user
 Create user on sign up page
 
-4) Log in with user
-Associate youtube or twitter account
+4) Log in with user - connect to XRP wallet
+https://xumm.readme.io/docs/user-sign-in
+
+Allow route access if wallet connected
+allow route access if NFT of any type held
+allow route access if specific NFT held
+Associate youtube or twitter account tie it to wallet in DB
+
 Post content from social
 
 5) mint NFTObject to XRPL
