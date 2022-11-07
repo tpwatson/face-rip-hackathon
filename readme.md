@@ -58,14 +58,14 @@ When a user watches the content we need to engage the camera, and recognize face
 
 
 1✔️) Add way to upload a piece of content (ipfs) using web3.storage for simplicity
-Save uploaded content to the db with metadata attached
+✔️Save uploaded content to the db with metadata attached
 Perhaps save user data in the web app's state
 Make it so only logged in users can upload content
 Make it so content is stored in the database with the ipfs hash, and the user's account
 
 
 2 ✔️) save data to DB (somewhere)
-Postgre Needed to facilitate
+✔️Postgre Needed to facilitate
 
 3 ✔️) Create new user
 Create user on sign up page

@@ -10,16 +10,17 @@ import Profile from './routes/Profile'
 import ContentSingle from './routes/ContentSingle'
 import logo from './assets/logo.png'
 import DatabaseTest from './routes/DatabaseTest'
+import Register from './routes/Register'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
+    <main className="App">
       <NavBar />
       <Links />
 
-    </div>
+    </main>
   )
 }
 
