@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-// CONTENT
+// CONTENT 
 
 app.get('/content', (req, res) => {
   content_model.getContent()
