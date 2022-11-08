@@ -83,6 +83,7 @@ Post content from social
 5) mint NFTObject to XRPL
 Create an NFT of the posted content
 Get a feel for the costs and frictions for user to mint NFTs onto XRPL
+- Create special NFTs to allow sponsorships and advertisers to play before or after content
 
 
 6) view on content single page

@@ -5,7 +5,7 @@ nav {
   
 }
 #logo {
-    filter: invert(100%);
+    /*filter: invert(100%);*/
 }
 #searchBar {
     margin-left: auto;

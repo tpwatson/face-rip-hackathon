@@ -9,7 +9,7 @@ export default function Navbar() {
     return (
         <>
             <nav id="Navbar">
-                <img id="logo" src={Logo} height="42" width="118" alt="" />                
+                <span id="logo">🎭FACERIP</span>                
                 <input type="search" id="searchBar" name="searchBar" placeholder='Find Stuff'></input>
                 <button id="searchButton">🔍</button>
                 <button id="uploadButton">Upload</button>
@@ -18,3 +18,6 @@ export default function Navbar() {
         </>
     )
 }
+/*
+<img id="logo" src={Logo} height="42" width="118" alt="" />                
+*/
